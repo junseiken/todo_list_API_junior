@@ -25,12 +25,16 @@ const Home = () => {
 				type="text"
 				value={task}
 				onChange={(e) => setTask(e.target.value)}
+				onKeyDown={(e) => {
+					if (e.key === "Enter") {
+						aggTask();
+					}
+				}}
 				placeholder="Ingrese una tarea"
 			/>
-			<button onClick={aggTask}>Agregar</button>
 			<ul className="task-list">
 				{list.length === 0 ? (
-					<li className="no-tasks">No hay tareas</li>
+					<li className="no-tasks alert alert-info">No hay tareas</li>
 				) : (
 					list.map((item, index) => (
 						<li key={index} className="task-item">
